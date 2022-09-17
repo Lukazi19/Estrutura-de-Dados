@@ -1,18 +1,15 @@
+
 #include <iostream>
 using namespace std;
 
-class aluno{
+class Aluno{
     private:
     int ra;
-    std::string nome;
-
-
+    string nome;
 
     public:
-    aluno();
-    aluno(int r, std::string n);
+    Aluno();
+    Aluno(int r, string n);
     string obterNome();
     int obterRa();
-
-
 };
