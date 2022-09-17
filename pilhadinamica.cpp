@@ -1,50 +1,51 @@
 #include <iostream>
 #include "pilhadinamica.h"
-#include <cstddef> // NULL
+#include <new>
+#include <cstddef> //NULL
 
 using namespace std;
 
-    pilhadinamica::pilhadinamica()//construtor //dynamic stack
+    pilhadinamica::pilhadinamica() //construtor //dynamic stack
     {
         NoTopo = NULL;
     }
 
     pilhadinamica::~pilhadinamica() //destrutor
     {
-        No* notemp;
-        while(NoTopo != NULL){
-            notemp = NoTopo;
-            NoTopo = NoTopo -> proximo;
-            delete notemp;
+        No* NoTemp;
+        while (NoTopo != NULL){
+            NoTemp = NoTopo;
+            NoTopo = NoTopo->proximo;
+            delete NoTemp;
         }
     }
 
-    bool pilhadinamica::estavazio()//isempty
+    bool pilhadinamica::estavazio() //isempty
     {
         return (NoTopo == NULL);
     }
 
-    bool pilhadinamica::estacheio()//tem memória //isfull
+    bool pilhadinamica::estacheio() //tem memória //isfull
     {
-        No* NoNovo; 
+        No* NoNovo;
         try{
             NoNovo = new No;
             delete NoNovo;
             return false;
-        } catch(bad_alloc exception){
+        } catch(std::bad_alloc exception){
             return true;
         }
     }
 
     void pilhadinamica::inserir(TipoItem item) //push
     {
-        if(estacheio()){
-            cout << " a pilha está cheia!\n";
-            cout << " não foi possivel inserir este elemento";
+        if (estacheio()){
+            cout << "A Pilha esta cheia!\n";
+            cout << "Nao foi possivel inserir este elemento!\n";
         } else{
             No* NoNovo = new No;
-            NoNovo -> valor = item;
-            NoNovo -> proximo = NoTopo;
+            NoNovo->valor = item;
+            NoNovo->proximo = NoTopo;
             NoTopo = NoNovo;
         }
     }
@@ -52,26 +53,26 @@ using namespace std;
     TipoItem pilhadinamica::remover() //pop
     {
         if (estavazio()){
-            cout << " a pilha está vazia\n";
-            cout << " não foi possivel remover nenhum elemento\n";
+            cout << "A Pilha esta vazia!\n";
+            cout << "Nao foi possivel remover nenhum elemento!\n";
             return 0;
         } else{
-            No* Notemp;
-            Notemp = NoTopo;
-            TipoItem item = NoTopo -> valor;
-            NoTopo = NoTopo -> proximo;
-            delete Notemp;
+            No* NoTemp;
+            NoTemp = NoTopo;
+            TipoItem item = NoTopo->valor;
+            NoTopo = NoTopo->proximo;
+            delete NoTemp;
             return item;
         }
     }
 
     void pilhadinamica::imprimir() //print
     {
-        No* notemp = NoTopo;
-        cout << "pilha: [ ";
-        while (notemp != NULL){
-            cout << notemp -> valor << " ";
-            notemp = notemp -> proximo;
+        No* NoTemp = NoTopo;
+        cout << "Pilha: [ ";
+        while (NoTemp != NULL){
+            cout << NoTemp->valor << " ";
+            NoTemp = NoTemp->proximo;
         }
         cout << "]\n";
     }

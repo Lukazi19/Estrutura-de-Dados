@@ -1,13 +1,20 @@
-// Fila Dinâmica = Dynamic Queue
 
+//Fila Dinâmica = Dynamic Queue
+
+#ifndef FILADINAMICA_H 
+#define FILADINAMICA_H 
+
+#include "No.h"
+
+/*/
 typedef int TipoItem;
-
 class No
 {
   public:
   TipoItem valor;
   No* proximo;
 };
+/*/
 
 class filadinamica{ 
 
@@ -25,3 +32,5 @@ class filadinamica{
     void imprimir(); //print
   
 };
+
+#endif

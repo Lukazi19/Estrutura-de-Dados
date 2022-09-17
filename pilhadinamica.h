@@ -1,12 +1,18 @@
 // Pilha Dinâmica = Dynamic Stack
 
-typedef int TipoItem;
+#ifndef PILHADINAMICA_H 
+#define PILHADINAMICA_H 
 
+#include "No.h"
+
+/*/
+typedef int TipoItem;
 struct No //Node
 {
     TipoItem valor;
     No* proximo;
 };
+/*/
 
 class pilhadinamica{
     private:
@@ -23,3 +29,5 @@ class pilhadinamica{
 
     
 };
+
+#endif

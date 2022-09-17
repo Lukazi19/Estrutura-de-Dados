@@ -34,7 +34,7 @@ using namespace std;
             temp = new No;
             delete temp;
             return false;
-        } catch(bad_alloc exception){
+        } catch(std::bad_alloc exception){
             return true;
         }
     }
